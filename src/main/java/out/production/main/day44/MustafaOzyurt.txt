@@ -1,0 +1,8 @@
+core javayi bitirmek uzereyiz.
+core javada iyi olmak icin , java question banki bitirmelisin
+interviewlerde iyi olmak icin , arkadaslarina ogretmelisin.
+Javadan sonra , Postgre SQL ogrenmeye basliyacaksiniz.
+We are about to end core Java.
+To be good at core Java, you should complete Java Question Bank book.
+To be good at interviews, you should teach your friends.
+After Java, you will start to learn Postgre SQL.

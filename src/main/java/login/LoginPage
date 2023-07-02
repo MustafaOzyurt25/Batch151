@@ -1,0 +1,79 @@
+Design a signup and login page for a site.
+
+menu: the user is shown the menu for action selection.
+
+register: get name-surname, username, email and password information from the user.
+username, email and password are kept in a list.
+same username or email is not accepted.
+
+login: username/email and password are entered.
+If the username or email is not found, it is not registered, sign up warning is given.
+If the username/email and the password registered in the same index are verified, the site will be logged.
+
+email validation: must not contain spaces
+: must contain @
+
+
+password validation:
+: must be at least 6 characters
+
+
+package UserProject;
+
+import java.util.Scanner;
+
+public class LoginPage extends UserService {
+    public static void main(String[] args) {
+
+        LoginPage lg= new LoginPage();
+        lg.start();
+
+    }
+
+    public void start(){
+        Scanner input= new Scanner(System.in);
+        int seçenek;
+
+        do {
+            showMenu();
+            seçenek= input.nextInt();
+            switch (seçenek){
+                case 1:
+                    signUp();
+                    break;
+                case 2:
+                    logIn();
+                    break;
+                case 0:
+                    System.out.println("İyi günler");
+                    break;
+                default:
+                    System.out.println("Yanlış değer girdiniz lütfen tekrar deneyin");
+            }
+        }while(seçenek!=0);
+
+    }
+
+    public static void showMenu() {
+        System.out.println("TECHPROEDUCATION");
+        System.out.println("1-Sign Up");
+        System.out.println("2-Log in");
+        System.out.println("0-OUT");
+        System.out.println("Seçiminiz :");
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

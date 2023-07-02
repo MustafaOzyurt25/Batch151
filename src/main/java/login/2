@@ -1,0 +1,126 @@
+package UserProject;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class UserService implements Zorunlu{
+    List<String> emails= new ArrayList<>();
+    List<String> passwords= new ArrayList<>();
+    List<String> usernames= new ArrayList<>();
+    List<User> users= new ArrayList<>();
+
+
+    @Override
+    public void signUp() {
+        Scanner input= new Scanner(System.in);
+
+        // 1)Name-Surname:
+        System.out.println("Name-Surname: ");
+        String name= input.nextLine();
+
+        // 2)Username:
+        String username;
+        boolean existUsername;
+
+        do {
+            System.out.println("Enter username: ");
+            username= input.next();
+            existUsername= usernames.contains(username);
+            if (existUsername){
+                System.out.println("Bu username daha önce kullanıldı, lütfen farklı bir isim deneyin");
+            }
+        }while(existUsername);
+        usernames.add(username);
+
+        /*
+            3) Email
+            must contain @
+            must be unique
+         */
+
+        String email;
+        boolean existEmail;
+        boolean isValid;
+
+        do {
+            System.out.println("Lütfen email adresinizi girin: ");
+            email= input.next();
+            existEmail= emails.contains(email);
+            isValid= isValidEmail(email);
+
+            if (existEmail){
+                System.out.println("Bu email adresi daha önce kullanıldı lütfen farklı bir mail adresi deneyin.");
+            }
+
+        }while (existEmail || !isValid);
+        emails.add(email);
+
+        /*
+            4) Password
+            must contain at least 6 charcater
+         */
+        String password;
+        boolean isValidPass;
+
+        do {
+            System.out.println("Lütfen parolanızı giriniz.");
+            System.out.println("UYARI: Parola en az 6 haneli olmalı!");
+            password= input.next();
+            isValidPass= isValidPass(password);
+        }while(!isValidPass);
+        passwords.add(password);
+
+        User user= new User(name, username, email, password);
+        users.add(user);
+
+        System.out.println("Tebrikler. Kayıt işlemi başarıyla gerçekleştirildi. Giriş yapabilirsiniz");
+    }
+
+    @Override
+    public void logIn() {
+        Scanner input= new Scanner(System.in);
+        boolean isMail;
+        String userEmail;
+
+        do {
+            System.out.println("Lütfen email adresinizi girin: ");
+            userEmail= input.next();
+            isMail= emails.contains(userEmail);
+        }while(!isMail);
+
+        boolean isValid;
+        do {
+            System.out.println("Lütfen parolanızı girin: ");
+            String userPass= input.next();
+            int idxEmail= emails.indexOf(userEmail);
+
+            isValid= passwords.get(idxEmail).equals(userPass);
+            if(!isValid){
+                System.out.println("Hatalı parola lütfen tekrar deneyin");
+            }
+        }while (!isValid);
+
+        System.out.println("Hoşgeldiniz!");
+    }
+
+    public boolean isValidEmail(String email){
+        boolean isValid= email.contains("@");
+        if (isValid==false){
+            System.out.println("Hatalı email adresi girdiniz, lütfen tekrar kontrol edin");
+        }
+        return isValid;
+    }
+
+    public boolean isValidPass(String pass){
+        boolean isValid;
+        if( pass.length()>=6){
+            isValid= true;
+        } else {
+            isValid= false;
+            System.out.println("Hatalı parola lütfen tekrar deneyin");
+        }
+
+        return isValid;
+    }
+}

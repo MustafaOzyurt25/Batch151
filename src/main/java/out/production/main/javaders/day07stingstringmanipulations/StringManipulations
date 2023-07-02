@@ -1,0 +1,39 @@
+
+
+                                String Methodlari
+ 1) endsWith () Metnin bellirli bir datayla bitip bitmedigini verir
+                Bize boolean bir sonuc dondurur
+                Tek karakterde , coklu karakterde kullanilabilir
+
+ 2) replace ()  Metnin icerisindeki belirli bir datanin yerine verilen diger datayi yerlestirir
+                String bir data dondurur
+                tekli karakterler ile de coklu karakterler ile de calisir
+                Ancak her iki taraftada " "  ya da  her iki taraftada ' ' kullanilmalidir.
+
+ 3) replaceAll()Bir grup datayi degistirmek icin kullanilir.
+                Bir grup datayi ifade edebilmek icin Regular
+                Expression (Regex) kullanilir
+
+                /*
+                        en cok kukkanilan regex exp
+
+
+                        Tum rakamlar ==> [0-9]
+                        Tum kucuk harfler ==>[a-z]
+                        Tum buyuk harfler ==>[A-Z]
+                        Tum harfler ==>[a-zA-Z]
+                        Tum  harfler VE Tum rakamlar  ==>[a-zA-Z0-9]
+                        Tum Noktalama Isaretleri ===> \\p{punct}
+                        Tum  Sesli harfler ===> [aeiouAEIOU]
+
+                        ^ ===> den farkli, haricinde.
+
+                        /*
+                        en cok kukkanilan regex exp
+                        Tum rakamlar Haric ==> [^0-9]
+                        Tum kucuk harfler Haric ==>[^a-z]
+                        Tum buyuk harfler Haric ==>[^A-Z]
+                        Tum harfler Haric ==>[^a-zA-Z]
+                        Tum  harfler VE Tum rakamlar Haric ==>[^a-zA-Z0-9]
+                        Tum Noktalama Isaretleri Haric ===> ^\P{P}  ================== >>>>>>>>>
+                        Tum  Sesli harfler Haric ===> [^aeiouAEIOU]
